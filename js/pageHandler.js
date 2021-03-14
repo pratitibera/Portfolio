@@ -1,70 +1,54 @@
-function viewStatus() {
-  document.getElementById('view-status-section').style.display = "block";
-  document.getElementById('raise-ticket-section').style.display = "none";
-}
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-function raiseTicket() {
-  document.getElementById('view-status-section').style.display = "none";
-  document.getElementById('raise-ticket-section').style.display = "block";
-}
+anime.timeline({
+      loop: true
+   })
+   .add({
+      targets: '.ml3 .letter',
+      opacity: [0, 1],
+      easing: "easeInOutQuad",
+      duration: 2250,
+      delay: (el, i) => 150 * (i + 1)
+   }).add({
+      targets: '.ml3',
+      opacity: 0,
+      duration: 1000,
+      easing: "easeOutExpo",
+      delay: 1000
+   });
 
-function option() {
-  document.getElementById('raise-ticket-section').style.display = "none";
-  document.getElementById('raise-issue-section').style.display = "block";
-}
 
-function issueDetails() {
-  document.getElementById('issueDetails').style.display = "flex";
-  document.getElementById('issueDetailsImage').style.display = "flex";
-}
+var textWrapper = document.querySelector('.ml11 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
-function sidebar() {
-  $(".humberger__menu__wrapper").addClass("show__humberger__menu__wrapper");
-  $(".humberger__menu__overlay").addClass("active");
-}
-
-function ticketDetails() {
-  document.getElementById('admin-ticketDetails').style.display = "block";
-}
-
-function showsection2() {
-  document.getElementById('section2').style.display = "block";
-  document.getElementById('section1').style.display = "none";
-  document.getElementById('admin-ticketDetails').style.display = "none";
-
-  $(".humberger__menu__wrapper").removeClass(
-      "show__humberger__menu__wrapper"
-    );
-    $(".humberger__menu__overlay").removeClass("active");
-    $("body").removeClass("over_hid");
-}
-
-function showsection1() {
-  document.getElementById('section2').style.display = "none";
-  document.getElementById('section1').style.display = "block";
-  document.getElementById('admin-ticketDetails').style.display = "none";
-
-  $(".humberger__menu__wrapper").removeClass(
-      "show__humberger__menu__wrapper"
-    );
-    $(".humberger__menu__overlay").removeClass("active");
-    $("body").removeClass("over_hid");
-}
-
-(function ($) {
-
-  //Humberger Menu
-  $(".humberger__open").on("click", function () {
-    $(".humberger__menu__wrapper").addClass("show__humberger__menu__wrapper");
-    $(".humberger__menu__overlay").addClass("active");
-    $("body").addClass("over_hid");
-  });
-
-  $(".humberger__menu__overlay").on("click", function () {
-    $(".humberger__menu__wrapper").removeClass(
-      "show__humberger__menu__wrapper"
-    );
-    $(".humberger__menu__overlay").removeClass("active");
-    $("body").removeClass("over_hid");
-  });
-})(jQuery);
+anime.timeline({
+      loop: true
+   })
+   .add({
+      targets: '.ml11 .line',
+      scaleY: [0, 1],
+      opacity: [0.5, 1],
+      easing: "easeOutExpo",
+      duration: 700
+   })
+   .add({
+      targets: '.ml11 .line',
+      translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+      easing: "easeOutExpo",
+      duration: 700,
+      delay: 100
+   }).add({
+      targets: '.ml11 .letter',
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 600,
+      offset: '-=775',
+      delay: (el, i) => 34 * (i + 1)
+   }).add({
+      targets: '.ml11',
+      opacity: 0,
+      duration: 1000,
+      easing: "easeOutExpo",
+      delay: 1000
+   });
